@@ -11,44 +11,46 @@ async function resetDatabase() {
   try {
     // Drop existing tables if they exist
     await pool.query(`
-        DROP TABLE IF EXISTS artists CASCADE;
-        DROP TABLE IF EXISTS albums CASCADE;
+        DROP TABLE IF EXISTS boats CASCADE;
+        DROP TABLE IF EXISTS passengers CASCADE;
     `);
 
-    // Create the artists table
+    // Create the boats table
     await pool.query(`
-        CREATE TABLE artists (
+        CREATE TABLE boats (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            name VARCHAR(255) NOT NULL
+            name VARCHAR(255) NOT NULL,
+            capacity INT NOT NULL
         );
     `);
 
-    // Create the albums table with a foreign key to the artists table
+    // Create the passengers table with a foreign key to the boats table
     await pool.query(`
-        CREATE TABLE albums (
+        CREATE TABLE passengers (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            title VARCHAR(255) NOT NULL,
-            published_date DATE,
-            artist_id INT REFERENCES artists(id)
+            name VARCHAR(255) NOT NULL,
+            age INT,
+            boat_id INT REFERENCES boats(id)
         );
     `);
 
-    // Seed the artists table
+    // Seed the boats table
     await pool.query(`
-        INSERT INTO artists (name)
+        INSERT INTO boats (name, capacity)
         VALUES 
-            ('Dua Lipa'),
-            ('Jay-Z');
+            ('Serenity', 10),
+            ('Wave Rider', 6);
     `);
 
-    // Seed the albums table
+    // Seed the passengers table
     await pool.query(`
-        INSERT INTO albums (title, published_date, artist_id)
+        INSERT INTO passengers (name, age, boat_id)
         VALUES 
-            ('Dua Lipa', '2017-06-02', 1),
-            ('Future Nostalgia', '2020-03-27', 1),
-            ('Reasonable Doubt', '1996-06-25', 2),
-            ('The Blueprint', '2001-09-11', 2);
+            ('John Doe', 35, 1),
+            ('Jane Smith', 28, 1),
+            ('Mike Johnson', 42, 2),
+            ('Emily Brown', 31, 2),
+            ('David Wilson', 39, 1);
     `);
 
     console.log("Database reset successful");
