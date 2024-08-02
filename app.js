@@ -38,12 +38,21 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 
 // Endpoint to retrieve all <resource_one>
 app.get("/boats/", async function (req, res) {
-    res.status(200).send("I'm alive!");
+  const boats = await getBoats();
+  res.status(200).json({ status: "success", data: boats });  
 });
 
 // Endpoint to retrieve a <resource_one> by id
-app.get("/boats/:id", async function (req, res) {
-});
+app.get("/boats/:id", async function (req, res) { 
+  const id = req.params.id;
+  const boat = await getBoatById(id);
+  if (!boat) {
+    return res
+    .status(400)
+    .json({ status: "fail", data: {msg: "Boat not found"} }); 
+  }  
+    res.status(200).json({ status: "success", data: boat })
+  });
 
 // Endpoint to create a new <resource_one>
 app.post("/boats/", async function (req, res) {
