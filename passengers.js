@@ -1,12 +1,11 @@
-
 // Import the 'pool' object so our helper functions can interact with the PostgreSQL database
-import { pool } from "./db/index.js";
+import { pool } from './db/index.js';
 
 export async function getPassengers() {
-  // Query the database and return all Passengers 
- 
+  // Query the database and return all Passengers
+
   // Define the SQL query to fetch all passengers from the 'passengers' table
-  const queryText = "SELECT * FROM passengers";
+  const queryText = 'SELECT * FROM passengers';
 
   // Use the pool object to send the query to the database
   const result = await pool.query(queryText);
@@ -18,13 +17,13 @@ export async function getPassengers() {
 export async function getPassengerById(id) {
   // Query the database and return the resource with a matching id or null
 
-  const queryText = "SELECT * FROM passengers WHERE id = $1";  
-      // Use the pool object to send the query to the database
-    
+  const queryText = 'SELECT * FROM passengers WHERE id = $1';
+  // Use the pool object to send the query to the database
+
   const result = await pool.query(queryText, [id]);
-     // passing the id as a parameter to prevent SQL injection
+  // passing the id as a parameter to prevent SQL injection
   return result.rows[0] || null;
-      // The rows property of the result object contains the retrieved records
+  // The rows property of the result object contains the retrieved records
 }
 
 export async function createPassenger(resource) {
