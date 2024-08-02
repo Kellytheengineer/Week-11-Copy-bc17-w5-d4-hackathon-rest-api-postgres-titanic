@@ -79,6 +79,15 @@ app.get("/passengers/", async function (req, res) {
   
   // Endpoint to retrieve a <resource_twos> by id
   app.get("/passengers/:id", async function (req, res) {
+    const id = req.params.id;
+    const passenger = await getPassengerById(id);
+    if (!passenger) {
+      return res
+      .status(400)
+      .json({ status: "fail", data: {msg: "Passenger not found"} }); 
+    }  
+      res.status(200).json({ status: "success", data: passenger })
+
   });
   
   // Endpoint to create a new <resource_twos>

@@ -17,6 +17,14 @@ export async function getPassengers() {
 
 export async function getPassengerById(id) {
   // Query the database and return the resource with a matching id or null
+
+  const queryText = "SELECT * FROM passengers WHERE id = $1";  
+      // Use the pool object to send the query to the database
+    
+  const result = await pool.query(queryText, [id]);
+     // passing the id as a parameter to prevent SQL injection
+  return result.rows[0] || null;
+      // The rows property of the result object contains the retrieved records
 }
 
 export async function createPassenger(resource) {
