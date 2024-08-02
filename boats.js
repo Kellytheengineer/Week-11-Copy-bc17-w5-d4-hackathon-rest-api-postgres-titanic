@@ -3,7 +3,15 @@
 import { pool } from "./db/index.js";
 
 export async function getBoats() {
-  // Query the database and return all resource ones
+  // Query the database and return all resource ones 
+  
+    const queryText = "SELECT * FROM passengers";
+
+    // Use the pool object to send the query to the database
+    const result = await pool.query(queryText);
+  
+    // The rows property of the result object contains the retrieved records
+    return result.rows;
 }
 
 export async function getBoatById(id) {

@@ -1,12 +1,6 @@
 import { pool } from "../index.js";
 
 
-
-// >>> MAKE SURE YOU UNDERSTAND THIS FILE AND WHAT IT'S DOING <<<
-// >>> FEEL FREE TO CHANGE IT TO MAKE YOUR OWN RESOURCES (TABLES AND PROPERTIES) - YOU DON'T HAVE TO USE ALBUMS AND ARTISTS <<<
-
-
-
 async function resetDatabase() {
   try {
     // Drop existing tables if they exist

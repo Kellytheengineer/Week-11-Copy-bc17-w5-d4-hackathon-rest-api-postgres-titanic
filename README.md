@@ -48,7 +48,7 @@ The following Entity-Relationship Diagram (ERD) shows how the various entities i
 
 ![ERD Diagram] ![alt text](image-1.png)
 
-> **Note:** Replace `path/to/your/erd-diagram.png` with the actual path to your ERD diagram image.
+ Replace `path/to/your/erd-diagram.png` with the actual path to your ERD diagram image.
 
 
 
