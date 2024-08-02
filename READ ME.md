@@ -28,16 +28,6 @@ npm install
 
 This will install all the dependencies listed in your `package.json` file.
 
-### Installing Express
-
-Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
-
-To install Express, run the following command in your terminal:
-
-```sh
-npm install express
-```
-
 ### Install Postman or Insomnia API Viewers
 
 For testing and interacting with your API, you can use tools like Postman or Insomnia.
@@ -49,10 +39,8 @@ For testing and interacting with your API, you can use tools like Postman or Ins
 To start the project, run the following command in your terminal:
 
 ```sh
-node your_main_file.js
+npm run dev
 ```
-
-Replace `your_main_file.js` with the actual name of your main JavaScript file (e.g., `app.js` or `server.js`).
 
 ## Entity-Relationship Diagram
 

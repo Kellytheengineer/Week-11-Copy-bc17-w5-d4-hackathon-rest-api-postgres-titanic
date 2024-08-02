@@ -6,18 +6,18 @@ export async function getBoats() {
   // Query the database and return all resource ones
 }
 
-export async function getBoatsById(id) {
+export async function getBoatById(id) {
   // Query the database and return the resource with a matching id or null
 }
 
-export async function createBoats(resource) {
+export async function createBoat(resource) {
   // Query the database to create an resource and return the newly created resource
 }
 
-export async function updateBoatsById(id, updates) {
+export async function updateBoatById(id, updates) {
   // Query the database to update the resource and return the newly updated resource or null
 }
 
-export async function deleteBoatsById(id) {
+export async function deleteBoatById(id) {
   // Query the database to delete the resource and return the deleted resource or null
 }
